@@ -155,8 +155,8 @@ const ResultScreen = ({ score, answers, questions, onRetry }) => {
                 {answers.map((a, idx) => {
                   const q = questions.find(q => q.id === a.questionId);
                   const ansText = q?.answers[a.answerIdx]?.text;
-                  // Poetic short version of the answer
-                  const shortVersion = ansText ? ansText.split('—')[0].split('...')[0].substring(0, 30) : "A beautiful choice";
+                  // Handle bilingual split
+                  const shortVersion = ansText ? ansText.split('/')[1]?.trim() || ansText : "✨";
                   return (
                     <span key={idx} className="result-tag">
                       {q?.emoji} {shortVersion}
@@ -214,7 +214,7 @@ const ResultScreen = ({ score, answers, questions, onRetry }) => {
                 {answers.map((a, idx) => {
                   const q = questions.find(q => q.id === a.questionId);
                   const ansText = q?.answers[a.answerIdx]?.text;
-                  const shortVersion = ansText ? ansText.split('—')[0].split('...')[0].substring(0, 30) : "A thoughtful choice";
+                  const shortVersion = ansText ? ansText.split('/')[1]?.trim() || ansText : "✨";
                   return (
                     <span key={idx} className="result-tag" style={{ background: 'rgba(192, 132, 252, 0.08)', borderColor: 'rgba(192, 132, 252, 0.2)', color: '#d8b4fe' }}>
                       {q?.emoji} {shortVersion}
@@ -275,7 +275,7 @@ const ResultScreen = ({ score, answers, questions, onRetry }) => {
                 {answers.map((a, idx) => {
                   const q = questions.find(q => q.id === a.questionId);
                   const ansText = q?.answers[a.answerIdx]?.text;
-                  const shortVersion = ansText ? ansText.split('—')[0].split('...')[0].substring(0, 30) : "An honest choice";
+                  const shortVersion = ansText ? ansText.split('/')[1]?.trim() || ansText : "✨";
                   return (
                     <span key={idx} className="result-tag" style={{ background: 'rgba(103, 232, 249, 0.08)', borderColor: 'rgba(103, 232, 249, 0.2)', color: '#a5f3fc' }}>
                       {q?.emoji} {shortVersion}
