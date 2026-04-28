@@ -1,0 +1,153 @@
+/* ── PhotoSlideshow.css ── */
+
+.slideshow-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  background: #0d0720;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image stack */
+.slideshow-images {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideshow-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+  background: #0d0720;
+}
+
+.slideshow-img.ss-active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slideshow-img.ss-prev {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.2s ease;
+}
+
+@keyframes kenBurns {
+  from { transform: scale(1.05) translate(0, 0); }
+  to   { transform: scale(1.12) translate(-1%, -1%); }
+}
+
+/* Gradient overlay — bottom fade for dots visibility + romantic tint */
+.slideshow-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top,   rgba(7,4,15,0.75) 0%, transparent 40%),
+    linear-gradient(to bottom, rgba(7,4,15,0.25) 0%, transparent 30%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Pink glow in top-right corner */
+.slideshow-glow {
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255,107,157,0.2), transparent 70%);
+  z-index: 3;
+  pointer-events: none;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%,100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+
+/* Dot indicators */
+.slideshow-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.ss-dot {
+  width: 7px; height: 7px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ss-dot-active {
+  width: 22px;
+  background: #ff6b9d;
+  box-shadow: 0 0 8px rgba(255,107,157,0.7);
+}
+
+/* ─── Mobile responsive ─── */
+@media (max-width: 600px) {
+  .slideshow-root {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+  }
+  
+  .slideshow-images {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .slideshow-img {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .slideshow-dots {
+    bottom: 8px;
+    gap: 5px;
+  }
+  
+  .ss-dot {
+    width: 5px;
+    height: 5px;
+  }
+  
+  .ss-dot-active {
+    width: 16px;
+  }
+}
+
+.ss-dot:hover:not(.ss-dot-active) {
+  background: rgba(255,255,255,0.6);
+}
+
+/* Empty state */
+.slideshow-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #64748b;
+  font-size: 1rem;
+}

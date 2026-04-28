@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
+:root {
+  /* Color palette */
+  --bg-deep:       #07040f;
+  --bg-base:       #0d0720;
+  --bg-card:       rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-glow:   rgba(255, 107, 157, 0.35);
+
+  --accent-rose:   #ff6b9d;
+  --accent-pink:   #ff4d8d;
+  --accent-violet: #c084fc;
+  --accent-lavender: #a78bfa;
+  --accent-gold:   #fbbf24;
+
+  --text-primary:  #f8fafc;
+  --text-secondary:#cbd5e1;
+  --text-muted:    #64748b;
+
+  /* Typography */
+  --font-body:     'Outfit', sans-serif;
+  --font-display:  'Playfair Display', serif;
+
+  /* Spacing */
+  --radius-sm:  8px;
+  --radius-md:  16px;
+  --radius-lg:  24px;
+  --radius-xl:  40px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-rose: 0 10px 40px rgba(255, 107, 157, 0.3);
+  --shadow-violet: 0 10px 40px rgba(192, 132, 252, 0.3);
+  --shadow-deep: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
